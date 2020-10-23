@@ -12,6 +12,7 @@ https://cccc-engineer.github.io/Praying/
 
 3. Start frontend webpage
   - cd myfrontend
+  - npm install
   - npm start
 
 [Set up process]
