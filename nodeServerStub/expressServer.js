@@ -1,4 +1,5 @@
 // const { Middleware } = require('swagger-express-middleware');
+const tag = "[expressServer.js v0.0.1]";
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -33,7 +34,7 @@ class ExpressServer {
     this.app.use(express.urlencoded({ extended: false }));
     this.app.use(cookieParser());
     
-    this.app.get('/', (req, res) => res.sendFile((path.join(__dirname, 'api', 'index.html'))));
+    this.app.get('/', (req, res) => res.sendFile((path.join(__dirname,'index.html'))));
 
     //Simple test to see that the server is up and responding 
     this.app.get('/hello', (req, res) => res.send(`Hello World. path: ${this.openApiPath}`));
@@ -69,6 +70,7 @@ class ExpressServer {
         });
 
         http.createServer(this.app).listen(this.port);
+        console.log(`tag: ${tag}`);
         console.log(`Listening on port ${this.port}`);
       });
   }
@@ -77,7 +79,7 @@ class ExpressServer {
   async close() {
     if (this.server !== undefined) {
       await this.server.close();
-      console.log(`Server on port ${this.port} shut down`);
+      console.log(`Server on port ${this.port} shut down`); 
     }
   }
 }
