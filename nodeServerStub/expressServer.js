@@ -34,7 +34,7 @@ class ExpressServer {
     this.app.use(express.urlencoded({ extended: false }));
     this.app.use(cookieParser());
     
-    this.app.get('/', (req, res) => res.sendFile((path.join(__dirname,'index.html'))));
+    this.app.get('/', (req, res) => res.sendFile((path.join(__dirname,'api','index.html'))));
 
     //Simple test to see that the server is up and responding 
     this.app.get('/hello', (req, res) => res.send(`Hello World. path: ${this.openApiPath}`));
