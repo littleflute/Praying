@@ -40,33 +40,33 @@ class Products extends React.Component{
      }
 
     render(){
-      const {statements}= this.state;
-    return(
-      <div>
-      <table>
-      <tr>
-        <th>id</th>
-        <th>Purchase Date</th>
-        <th>Seller</th>
-        <th class="headerSortDown">Item</th>
-        <th class="headerSortUp">Amount ($)</th>
-        <th>Method</th>
-        <th>Unit Cost($)</th>
-        <th>Quantity</th>
-        <th>Unit Price($)</th>
-        <th>Profit</th>
-        <th>Receive Date</th>
-        <th>Deliver Date</th>
-      </tr>
-      <tbody>
-        {this.renderTableData()}
-      </tbody>
-      </table>
 
-      </div>
+      return(
+        <div>
+        <table>
+        <tr>
+          <th>id</th>
+          <th>Purchase Date</th>
+          <th>Seller</th>
+          <th class="headerSortDown">Item</th>
+          <th class="headerSortUp">Amount ($)</th>
+          <th>Method</th>
+          <th>Unit Cost($)</th>
+          <th>Quantity</th>
+          <th>Unit Price($)</th>
+          <th>Profit</th>
+          <th>Receive Date</th>
+          <th>Deliver Date</th>
+        </tr>
+        <tbody>
+          {this.renderTableData()}
+        </tbody>
+        </table>
 
-    );
-  }
+        </div>
+
+      );
+    }
 }
 
 export default Products;
