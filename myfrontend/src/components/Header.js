@@ -6,21 +6,19 @@ function Header(){
     return(
       <div className="navContent">
       <nav className="navbar">
-        <a href="/">Home</a>
+        <a href="/">About</a>
         <div className="dropdown">
           <button className="dropbtn">Actions</button>
           <div className="dropdown-content">
-            <a href="familyExpenses">Family Expenses</a>
-            <a href="productExpenses">Product Expenses</a>
+            <a href="postprayer">Post a prayer</a>
           </div>
         </div>
         <div className="dropdown">
           <button className="dropbtn">Statements</button>
           <div className="dropdown-content">
-            <a href="familyStatements">Family Statements</a>
-            <a href="bankStatements">Bank Statements</a>
+            <a href="getprayers">Prayers</a>
             <li className="divider"></li>
-            <a href="products">Products</a>
+            <a href="ccccmembers">Members</a>
           </div>
         </div>
       </nav>
