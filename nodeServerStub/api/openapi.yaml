@@ -8,74 +8,182 @@ info:
   title: cccc-praying-api
   description: The API for CCCC Praying project
 paths:
-  /getUserList:
-    get:
-      tags:
-        - Default
-      description: returns user list
-      operationId: getUserList
-      parameters:
-        - in: query 
-          name: filetype
-          description: the type of files
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: All the files
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string 
-                  example: 'v.json'
-          
- 
- 
-  '/openAPI/signup/{userName}/{password}/timer/{timeunit}':
+  /user:
     post:
       tags:
-        - Default
+        - User
       description: register a new user
-      operationId: signup
-      parameters:
-        - name: userName
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: password
-          in: path
-          required: true
-          schema:
-            type: string
-            format: int32
-        - name: timeunit
-          in: path
-          required: true
-          schema:
-            type: integer
-            format: int32
-     
+      operationId: newUser
+      requestBody:
+        required: true
+        description: user email and password.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginInfo'
       responses:
-        '200':
-          description: response
+        '201':
+          description: New User successfully added
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiResponse'
-      x-swagger-router-controller: Default
+                type: object
+                properties:
+                  id:
+                    oneOf:
+                      - type: integer
+                      - type: string
+                    description: >
+                      Unique ID of the created User.  Exact type/format will depend on your implementation but will likely be either an integer or a string.
+                    example: "123"
+        '400':
+          description: >
+            The request body was either not present or did not contain a valid User object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: >
+            The request was not made by an authenticated User satisfying the authorization criteria described above.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'          
  
+  /user/login:
+    post:
+      summary: Log in a User.
+      description: >
+        Authenticate a specific User with their email address and password.
+      operationId: authenticateUser
+      tags:
+        - User
+      requestBody:
+        required: true
+        description: >
+          Email address and plain-text password for the User being authenticated.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginInfo'
+            example:
+              email: jdoe@oregonstate.edu
+              password: hunter2
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    description: >
+                      succes infomation
+                    example: Login Success!
+        '400':
+          description: >
+            The request body was either not present or did not contain all of the required fields.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error' 
+        '401':
+          description: >
+            The specified credentials were invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error' 
+        '500':
+          description: >
+            An internal server error occurred.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /user/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: >
+          Unique ID of a User.  Exact type/format will depend on your implementation but will likely be either an integer or a string.
+        schema:
+          oneOf:
+            - type: integer
+            - type: string
+        example: "123"
+        required: true
+        
+    get:
+      summary: Fetch data about a specific User.
+      description: >
+        Returns information about the specified User. Include username and church jointed.
+      operationId: getUserById
+      tags:
+        - User
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserInfo'
+        '403':
+          description: >
+            The request was not made by an authenticated User satisfying the authorization criteria described above.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Specified Course `id` not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
+                
+                
 components:
   schemas:
-    ApiResponse:
+    LoginInfo:
+      description: >
+        An object representing information about a Tarpaulin application user.
       type: object
       properties:
-        code:
-          type: integer
-          format: int32
-        message:
+        email:
           type: string
-          example: everything is ok
+          description: >
+            Email address for the User.  This is required to be unique among all Users.
+          example: doej@oregonstate.edu
+        password:
+          type: string
+          description: >
+            The User's plain-text password.  This is required when creating a new User and when logging in.
+          example: hunter2
+    UserInfo:
+      description: >
+        user infomation include username and church    
+      type: object
+      properties:
+        username:
+          type: string
+          description: user's username
+          example: Amy Chan
+        church:
+          oneOf:
+            - type: integer
+            - type: string
+          description: the id of the church that the user joined
+    Error:
+      description: >
+        An object representing an error response from the API.
+      type: object
+      properties:
+        error:
+          type: string
+          description: A message describing the Error.          
+      
