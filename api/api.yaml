@@ -1,0 +1,81 @@
+openapi: 3.0.0
+servers:
+  # Edited at 2020/11/12
+  - description: SwaggerHub API Auto Mocking
+    url: http://bd69592b551e.ngrok.io/
+info:
+  version: "1.0.4"
+  title: cccc-praying-api
+  description: The API for CCCC Praying project
+paths:
+  /getUserList:
+    get:
+      tags:
+        - Default
+      description: returns user list
+      operationId: getUserList
+      parameters:
+        - in: query 
+          name: filetype
+          description: the type of files
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: All the files
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string 
+                  example: 'v.json'
+          
+ 
+ 
+  '/openAPI/signup/{userName}/{password}/timer/{timeunit}':
+    post:
+      tags:
+        - Default
+      description: register a new user
+      operationId: signup
+      parameters:
+        - name: userName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: path
+          required: true
+          schema:
+            type: string
+            format: int32
+        - name: timeunit
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+     
+      responses:
+        '200':
+          description: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+      x-swagger-router-controller: Default
+ 
+components:
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+          example: everything is ok
