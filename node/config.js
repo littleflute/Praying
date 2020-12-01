@@ -1,4 +1,4 @@
-const tag = "[config.js_v0.0.3]";
+const tag = "[config.js_v0.0.11]";
 const path = require('path');
 
 const l = require('./logger');
@@ -14,15 +14,15 @@ const config = {
 
   PRODUCTION: process.env.PRODUCTION,
 
-  h: process.env.DB_HOST ? process.env.DB_HOST : "localhost",
-  u: process.env.DB_USER ? process.env.DB_USER : "root",
-  pw: process.env.DB_PASSWORD ? process.env.DB_PASSWORD : "group6db",
+  h: process.env.DB_HOST ? process.env.DB_HOST : "ccccpraying.cepempio7fwp.us-east-2.rds.amazonaws.com",//"localhost",
+  u: process.env.DB_USER ? process.env.DB_USER : "admin1458",//"root",
+  pw: process.env.DB_PASSWORD ? process.env.DB_PASSWORD : "doorlock1458",//"group6db",
   db: "g6DB",
 
   oLocalDB:{
-    host: process.env.DB_HOST ? process.env.DB_HOST : "localhost",
-    user: process.env.DB_USER ? process.env.DB_USER : "root",
-    password: process.env.DB_PASSWORD ? process.env.DB_PASSWORD : "group6db",
+    host: process.env.DB_HOST ? process.env.DB_HOST : "ccccpraying.cepempio7fwp.us-east-2.rds.amazonaws.com",//"localhost",
+    user: process.env.DB_USER ? process.env.DB_USER : "admin1458",//"root",
+    password: process.env.DB_PASSWORD ? process.env.DB_PASSWORD : "doorlock1458",//"group6db",
     database: "g6DB"
   }
 };
