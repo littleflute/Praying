@@ -1,4 +1,4 @@
-const tag = "[t3.test.js_v0.25]";
+const tag = "[t3.test.js_v0.31]";
 const config = require('../config'); 
 const ExpressServer = require('../expressServer');
 const ES = new ExpressServer(config.URL_PORT, config.OPENAPI_YAML);
@@ -7,9 +7,8 @@ var assert = require('chai').assert;
 var testData = require('../auth/data/testData.js');
 var ds = testData.getUserDatas("p",5); 
 var ts = "auto test 3:";
-ts += "login & getAllPlayers & getPendingFriends & getFriends";
-ts += " & RequestToMakeFriend";
-ts += " & ReponseToMakeFriend";
+ts += "login & getAllUsers  "; 
+
 describe(ts, function() { 
     var token = "";
     var n = 1; 
@@ -32,9 +31,9 @@ describe(ts, function() {
 
     n++;
     var allPlayers = null;
-    it('Test 3.'+n+': getAllPlayers.', function() {    
+    it('Test 3.'+n+': getAllUsers.', function() {    
       return request(ES.app)
-        .get('/api/getAllPlayers')
+        .get('/api/getAllUsers')
         .send(ds[1])
         .set('accept', 'application/json')
         .set('Authorization','Bearer ' + token) 
