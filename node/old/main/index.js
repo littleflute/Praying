@@ -1,7 +1,9 @@
-const tag = "[main/index.js_v0.0.14] ";
+const tag = "[main/index.js_v0.0.15] ";
 
 const express = require('express')
 const app = express()
+const ut = require('../utils/test');
+
 const l = require('../../logger');
 l.tag(tag + __dirname); 
 
@@ -11,7 +13,7 @@ app.get('/', (req, res) => {
   res.send(tag + 'Hello World!')
 })
 app.get('/test', (req, res) => {
-  res.send(tag + 'test...')
+  res.send(tag + ut.f1())
 })
 
 
