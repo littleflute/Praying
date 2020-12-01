@@ -1,21 +1,21 @@
-const tag = "[config/config.js_v0.0.11]";
+const tag = "[config/config.js_v0.0.12]";
 
 
 const l = require('../../logger');
 l.tag(tag + __dirname); 
 
 
-const config = {
-    this.getDbInf = function(){
-        var i = {
-            host         : 'ccccpraying.cepempio7fwp.us-east-2.rds.amazonaws.com',
-            user         : 'admin1458',
-            password     : 'doorlock1458',
-            database     : 'ccccpraying'
-        };
-        return i;
-    }    
+const c = {
+    
 };
+c.getDbInf = function(){
+    var i = {
+        host         : 'ccccpraying.cepempio7fwp.us-east-2.rds.amazonaws.com',
+        user         : 'admin1458',
+        password     : 'doorlock1458',
+        database     : 'ccccpraying'
+    };
+    return i;
+}    
 
-
-module.exports = config;
+module.exports = c;
