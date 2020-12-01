@@ -14,21 +14,23 @@ db.connectTest = function(res){
     con.connect(function(err) {
         if (err){
             res.send(err);  
-        }  
-        console.log("Connected!");
+        }   
         res.send("Connected");
     }); 
 }
-db.createDB = function(dbName){
+db.createDB = function(dbName,res){
     var ci = cfg.getDbConInf();
     var con = mysql.createConnection(ci);
       
     con.connect(function(err) {
-        if (err) throw err;
-        console.log("Connected!");
+        if (err){
+            res.send(err);  
+        }   
         con.query("CREATE DATABASE " + dbName, function (err, result) {
-          if (err) throw err;
-          console.log("Database created");
+            if (err){
+                res.send(err);  
+            }   
+            res.send(dbName + " Database created");
         });
     });
 }
