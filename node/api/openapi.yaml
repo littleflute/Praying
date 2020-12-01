@@ -8,7 +8,7 @@ info:
     name: AllRightsReserved
     url: http://localhost:8080/
   title: CCCC Praying API
-  version: 1.0.12
+  version: 1.0.13
 
 servers:
 - url: http://localhost:8080/api
@@ -59,110 +59,9 @@ paths:
           description: bad input parameter
       x-openapi-router-controller: DefaultController
       x-openapi-router-service: DefaultService
-  /coinAndgem:
-    get:
-      operationId: coinAndgem
-      parameters:
-      - description: query id.
-        explode: true
-        in: query
-        name: id
-        required: true
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                items:
-                  $ref: '#/components/schemas/Group6User'
-                type: array
-          description: search results matching criteria
-        "400":
-          content: {}
-          description: bad input parameter
-      x-openapi-router-controller: DefaultController
-      x-openapi-router-service: DefaultService
-  /deletePlayer:
-    get:
-      operationId: deletePlayerGET
-      parameters:
-      - description: query id.
-        explode: true
-        in: query
-        name: id
-        required: true
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                items:
-                  $ref: '#/components/schemas/Group6User'
-                type: array
-          description: search results matching criteria
-        "400":
-          content: {}
-          description: bad input parameter
-      x-openapi-router-controller: DefaultController
-      x-openapi-router-service: DefaultService
-  /getGame:
-    get:
-      operationId: getGameInfo
-      parameters:
-      - description: query id.
-        explode: true
-        in: query
-        name: id
-        required: true
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                items:
-                  $ref: '#/components/schemas/Group6Game'
-                type: array
-          description: search results matching criteria
-        "400":
-          content: {}
-          description: bad input parameter
-      x-openapi-router-controller: DefaultController
-      x-openapi-router-service: DefaultService
-  /getGamebyUser:
-    get:
-      operationId: getGamebyUser
-      parameters:
-      - description: query id.
-        explode: true
-        in: query
-        name: id
-        required: true
-        schema:
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                items:
-                  $ref: '#/components/schemas/Group6Game'
-                type: array
-          description: search results matching criteria
-        "400":
-          content: {}
-          description: bad input parameter
-      x-openapi-router-controller: DefaultController
-      x-openapi-router-service: DefaultService   
+  
+ 
+ 
   /NewPlayer:
     post:
       description: Adds a player to the system
@@ -219,58 +118,7 @@ paths:
       summary: api/login
       x-openapi-router-controller: DefaultController
       x-openapi-router-service: DefaultService
-  /GameStarted:
-    post:
-      description: Adds a new game to the system
-      operationId: newGame
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Group6Game'
-        description: Description of started game
-        required: false
-      responses:
-        "201":
-          content: {}
-          description: item created
-        "400":
-          content: {}
-          description: invalid input, object invalid
-        "409":
-          content: {}
-          description: an existing item already exists
-      summary: api/newGame
-      tags:
-      - admins
-      x-openapi-router-controller: AdminsController
-      x-openapi-router-service: AdminsService
-  /GameEnded:
-    post:
-      description: ended a game
-      operationId: endGame
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Group6Game'
-        description: Inventory item to add
-        required: false
-      responses:
-        "201":
-          content: {}
-          description: item created
-        "400":
-          content: {}
-          description: invalid input, object invalid
-        "409":
-          content: {}
-          description: an existing item already exists
-      summary: api/endGame
-      tags:
-      - admins
-      x-openapi-router-controller: AdminsController
-      x-openapi-router-service: AdminsService
+  
 
   /adminSignIn:
     post:
