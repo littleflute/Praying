@@ -1,4 +1,4 @@
-const tag = "[utils/test.js_v0.0.2]";
+const tag = "[utils/test.js_v0.0.3]";
 const l = require('../../logger');
 l.tag(tag + __dirname); 
 
@@ -8,9 +8,8 @@ const test = {
     author      : 'littleflute'
 };
 
-test.f1 = function(){
-    _test();
-    return "f1";
+test.dbTest = function(){ 
+    return "dbTest";
 }
 
 //npm install canvas
