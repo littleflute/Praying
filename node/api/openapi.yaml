@@ -8,7 +8,7 @@ info:
     name: AllRightsReserved
     url: http://localhost:8080/
   title: CCCC Praying API
-  version: 1.0.11
+  version: 1.0.12
 
 servers:
 - url: http://localhost:8080/api
@@ -31,92 +31,7 @@ paths:
           content: {}
           description: bad input parameter
       x-openapi-router-controller: DefaultController
-      x-openapi-router-service: DefaultService   
- 
-
-  /getPendingFriends:
-    get:
-      operationId: getPendingFriends 
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ListWrapper'
-          description: search results matching criteria
-        "400":
-          content: {}
-          description: bad input parameter
-      x-openapi-router-controller: DefaultController
-      x-openapi-router-service: DefaultService   
-
-  /getFriends:
-    get:
-      operationId: getFriends 
-      responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                items:
-                  $ref: '#/components/schemas/Group6User'
-                type: array
-          description: search results matching criteria
-        "400":
-          content: {}
-          description: bad input parameter
-      x-openapi-router-controller: DefaultController
-      x-openapi-router-service: DefaultService   
-
-  /RequestToMakeFriend:
-    post:
-      operationId: RequestToMakeFriend 
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ToMakeFriendReqInf'
-        description: to make friend.
-        required: false 
-      responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                items:
-                  $ref: '#/components/schemas/ToMakeFriendReqInf'
-                type: array
-          description: search results matching criteria
-        "400":
-          content: {}
-          description: bad input parameter
-      x-openapi-router-controller: DefaultController
-      x-openapi-router-service: DefaultService
-      
-  /ReponseToMakeFriend:
-    post:
-      operationId: ReponseToMakeFriend 
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ReponseToMakeFriendInf'
-        description: to make friend.
-        required: false 
-      responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                items:
-                  $ref: '#/components/schemas/ReponseToMakeFriendInf'
-                type: array
-          description: search results matching criteria
-        "400":
-          content: {}
-          description: bad input parameter
-      x-openapi-router-controller: DefaultController
-      x-openapi-router-service: DefaultService
+      x-openapi-router-service: DefaultService    
 
   /getPlayer:
     get:
