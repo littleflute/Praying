@@ -1,4 +1,4 @@
-const tag = "[main/index.js_v0.0.15] ";
+const tag = "[main/index.js_v0.0.21] ";
 
 const express = require('express')
 const app = express()
@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
   res.send(tag + 'Hello World!')
 })
 app.get('/test', (req, res) => {
-  res.send(tag + ut.f1())
+  res.send(tag + ut.canvasTest())
 })
 
 
