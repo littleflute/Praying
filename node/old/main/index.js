@@ -1,4 +1,4 @@
-const tag = "[main/index.js_v0.0.12] ";
+const tag = "[main/index.js_v0.0.13] ";
 
 const express = require('express')
 const app = express()
@@ -8,7 +8,7 @@ l.tag(tag + __dirname);
 const port = 8080
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send(tag + 'Hello World!')
 })
 
 app.listen(port, () => {
