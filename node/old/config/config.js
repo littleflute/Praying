@@ -8,6 +8,14 @@ l.tag(tag + __dirname);
 const c = {
     
 };
+c.getDbConInf = function(){
+    var i = {
+        host         : 'ccccpraying.cepempio7fwp.us-east-2.rds.amazonaws.com',
+        user         : 'admin1458',
+        password     : 'doorlock1458' 
+    };
+    return i;
+}    
 c.getDbInf = function(){
     var i = {
         host         : 'ccccpraying.cepempio7fwp.us-east-2.rds.amazonaws.com',
