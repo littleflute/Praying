@@ -1,11 +1,11 @@
-const tag = "[i.js: v0.25] ";
+const tag = "[i.js: v0.31] ";
 console.log(tag);
 
 var http = require('http');
 var url = require('url');
 var fs = require('fs'); 
 
-var iShow = require('./iShow');
+var myConfig = require('./config/config');
 var iInsert = require('./iInsert');
 var iDelete = require('./iDelete');
 var g6RunSQL = require('./g6RunSQL');
