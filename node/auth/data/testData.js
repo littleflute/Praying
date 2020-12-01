@@ -1,11 +1,11 @@
 const d = {};
-d.v = "v0.14";
-d.getUserDatas = function(n){
+d.v = "v0.15";
+d.getUserDatas = function(sName,n){
     var os = [];
     for(var i = 0; i<n; i++){
         var o = {};
-        o.UserName = "u"+i;
-        o.Password = "u"+i;
+        o.UserName = sName + i;
+        o.Password = sName + i;
         os.push(o);
     }
     return os;

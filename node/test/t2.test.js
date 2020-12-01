@@ -1,11 +1,11 @@
-const tag = "[t2.test.js_v0.21]";
+const tag = "[t2.test.js_v0.22]";
 const config = require('../config'); 
 const ExpressServer = require('../expressServer');
 const ES = new ExpressServer(config.URL_PORT, config.OPENAPI_YAML);
 const request = require('supertest'); 
 var assert = require('chai').assert; 
 var testData = require('../auth/data/testData.js');
-var ds = testData.getUserDatas(10); 
+var ds = testData.getUserDatas("p",5); 
 
 describe('auto test 2: NewPlayer and check duplicate player', function() { 
     var n = 0;
