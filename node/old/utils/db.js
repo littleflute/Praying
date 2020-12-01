@@ -7,8 +7,7 @@ l.tag(tag + __dirname);
 
 const db = {};
 db.connectTest = function(res){    
-    var ci = cfg.getDbConInf();
-    r += JSON.stringify(ci);
+    var ci = cfg.getDbConInf(); 
 
     var con = mysql.createConnection(ci);
 
