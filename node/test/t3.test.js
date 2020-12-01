@@ -96,7 +96,7 @@ describe(ts, function() {
             .expect(200) 
             .then(response => {
                   console.log(tag + "****************** respoinse.body=", response.body); 
-                  assert(response.body.code == 1,"RequestToMakeFriend error!");
+                  assert(response.body.code == 1,"RequestToMakeFriend error: code=" + response.body.code);
           }) 
     });   
 

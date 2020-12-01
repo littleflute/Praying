@@ -1,5 +1,8 @@
-
+const tag = "[config.js_v0.0.2]";
 const path = require('path');
+
+const l = require('./logger');
+l.tag(tag + __dirname); 
 
 const config = {
   ROOT_DIR: __dirname,
