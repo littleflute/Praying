@@ -1,4 +1,4 @@
-const tag = "[main/index.js_v0.0.23] ";
+const tag = "[main/index.js_v0.0.24] ";
 
 const express = require('express')
 const app = express()
@@ -18,7 +18,7 @@ app.get('/test', (req, res) => {
 })
 
 app.get('/db', (req, res) => {
-    res.send(tag + db.test())
+    db.connectTest(res)
   })
   
 
