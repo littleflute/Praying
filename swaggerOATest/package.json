@@ -14,7 +14,9 @@
   "private": true,
   "dependencies": {
     "connect": "^3.2.0",
+    "formidable": "^1.2.2",
     "js-yaml": "^3.3.0",
+    "jsonwebtoken": "^8.5.1",
     "oas3-tools": "^2.0.2"
   }
 }
