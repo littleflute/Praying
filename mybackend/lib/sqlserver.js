@@ -1,10 +1,11 @@
 const mysql = require('mysql')
+const appURL = `http://localhost:4000/`;
 
 var db_config = {
-    host         : 'localhost',
-    user         : 'root',
-    password     : '9112345',
-    database     : 'homerecords'
+    host         : 'ccccpraying.cepempio7fwp.us-east-2.rds.amazonaws.com',
+    user         : 'admin1458',
+    password     : 'doorlock1458',
+    database     : 'ccccpraying'
 };
 
 exports.sqlconnection = function(){
@@ -12,6 +13,7 @@ exports.sqlconnection = function(){
 
   connection.connect(err =>{
     if(err){
+      console.log("Database not connected")
       return err;
     }else {
       console.log("New connection established with the database")
@@ -29,4 +31,8 @@ exports.getSQLDateFormat = function(mdate){
   //let tdate=new Date().toISOString().slice(0, 19).replace('T', ' ');
   let todaydate= year+'-'+month+'-'+date; //yyyy-mm-dd
   return todaydate;
+}
+
+exports.getGatewayURL = function(){
+  return appURL;
 }

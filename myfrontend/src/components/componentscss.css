@@ -73,18 +73,25 @@
 }
 
 
-table,td,tr{
-  text-align: center;
+table,th{
   border: 1px solid black;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: 2%;
   height: 50px;
-  width: 60%;
+  border-collapse:collapse;
 }
 
 td{
-  width:140px;
+    border: 1px solid black;
+    margin: 0;
+    width: 10%;
+    height: 30px;
+}
+
+tr:hover{
+  background-color: #e3d7a5;
 }
 
 form {
@@ -119,7 +126,6 @@ input{
 
 /* Only the submit button is matched by this selector,
        but to be sure you could use an id or class for that button */
-
 input+input {
   float: right;
 }
