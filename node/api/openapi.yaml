@@ -8,7 +8,7 @@ info:
     name: AllRightsReserved
     url: http://localhost:8080/
   title: CCCC Praying API
-  version: 1.0.13
+  version: 1.0.14
 
 servers:
 - url: http://localhost:8080/api
@@ -51,7 +51,7 @@ paths:
             '*/*':
               schema:
                 items:
-                  $ref: '#/components/schemas/Group6User'
+                  $ref: '#/components/schemas/CCCCUser'
                 type: array
           description: search results matching criteria
         "400":
@@ -183,13 +183,13 @@ components:
     reqInf4Reset:
       example:
         ID: 1
-        sql: Drop table group6User
+        sql: Drop table tbName
       properties:
         ID:
           example: 1
           type: integer
         sql:
-          example: Drop table group6User
+          example: Drop table tbName
           type: string
       required: 
       - ID  
@@ -313,7 +313,7 @@ components:
           type: number
         str:
           items:
-            $ref: '#/components/schemas/Group6User'
+            $ref: '#/components/schemas/CCCCUser'
           type: array
 
     SignupResInf:
@@ -330,16 +330,17 @@ components:
       required: 
       - code  
       type: object 
-    Group6User:
+
+    CCCCUser:
       example:
         UserID: d290f1ee-6c54-4b01-90e6-d701748f0851
-        UserName: Nes Cohen
+        UserName: userName
         Password: 123abc
         coin: 0
         gem: 0
-        FirstName: Nes
-        LastName: Cohen
-        EmailAddress: 123abc@group6.com
+        FirstName: userName
+        LastName: userName
+        EmailAddress: 123abc@livepraying.com
         Location: wids132 at 3ewed
         Coins: 100
         gems: 10
@@ -348,7 +349,7 @@ components:
           example: d290f1ee-6c54-4b01-90e6-d701748f0851
           type: string
         UserName:
-          example: Nes Cohen
+          example: userName
           type: string
         Password:
           example: 123abc
@@ -360,13 +361,13 @@ components:
           example: 0
           type: number
         FirstName:
-          example: Nes
+          example: userName
           type: string
         LastName:
-          example: Cohen
+          example: userName
           type: string
         EmailAddress:
-          example: 123abc@group6.com
+          example: 123abc@test.com
           type: string
         Location:
           example: wids132 at 3ewed
@@ -387,37 +388,4 @@ components:
       - Password
       - UserID
       - UserName
-      type: object
-    Group6Game:
-      example:
-        id: d290f1ee-6c54-4b01-90e6-d701748f0851
-        competitor_1: -1507897597
-        competitor_2: -1507897598
-        start_time: 2020-01-01 00:00:01
-        end_time: 2020-01-01 00:05:01
-        winner: -1507897598
-      properties:
-        GameID:
-          example: d290f1ee-6c54-4b01-90e6-d701748f0851
-          format: uuid
-          type: string
-        competitor_1:
-          example: -1507897597
-          type: integer
-        competitor_2:
-          example: -1507897598
-          type: integer
-        winner:
-          example: -1507897598
-          type: integer
-      required:
-      - competitor_1
-      - competitor_2
-      - id
-      - winner
-      type: object
-  securitySchemes:
-    bearerAuth:            # arbitrary name for the security scheme
-      type: http
-      scheme: bearer
-      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
+      type: object 
