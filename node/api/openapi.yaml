@@ -2,16 +2,16 @@ openapi: 3.0.1
 
 info:
   contact:
-    email: social@group6.io
-  description: Group 6 Studios API
+    email: littleflute@163.com
+  description: CCCC Praying API
   license:
     name: AllRightsReserved
-    url: http://localhost:3000/
-  title: Group 6 Studios API
-  version: 1.0.238
+    url: http://localhost:8080/
+  title: CCCC Praying API
+  version: 1.0.11
 
 servers:
-- url: http://localhost:3000/api
+- url: http://localhost:8080/api
 
 security:
 - bearerAuth: []
