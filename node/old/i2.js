@@ -1,10 +1,10 @@
-const tag = "[i2.js_v0.0.2]";
+const tag = "[i2.js_v0.0.3] ";
 const http = require('http');
 var url = require('url');
 var fs = require('fs');
 
 const api4i1 = require('./api/api4i1');
-const l = require('../../logger');
+const l = require('../logger');
 l.tag(tag + __dirname); 
 
 
