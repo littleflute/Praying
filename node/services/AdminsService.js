@@ -8,8 +8,6 @@ const adminReset = require('./g6Admin/reset.js');
 const l = require('../logger');
 l.tag(tag);  
   
- 
-
 class AdminsService {
   static adminSignIn({ body: reqInf }) {
     console.log(reqInf); 
@@ -21,7 +19,7 @@ class AdminsService {
           var r = g6A.signin(reqInf,resolve,Service);  
            
         } catch (e) {
-          resolve(Service.rejectResponse(
+          resolve(Service.rejectResponse( 
             e.message || 'Invalid input',
             e.status || 405,
           ));

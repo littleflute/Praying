@@ -9,6 +9,7 @@ var ds = testData.getUserDatas("p",5);
 
 describe('auto test 2: NewPlayer and check duplicate player', function() { 
     var n = 0;
+    /*
     for(i in ds){
       n++;
       it('Test 2.'+n+': register a new user.', function(_us,_i) {   
@@ -29,7 +30,9 @@ describe('auto test 2: NewPlayer and check duplicate player', function() {
           }
       }(ds,i));  
     }     
-    
+    //*/
+
+    /*
     for(i in ds){
       n++;
       it('Test 2.'+n+': check duplicate player.', function(_us,_i) {   
@@ -50,4 +53,5 @@ describe('auto test 2: NewPlayer and check duplicate player', function() {
           }
       }(ds,i));  
     }     
+    //*/
 });
