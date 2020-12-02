@@ -2,6 +2,8 @@
 A website that praying for everyone
 https://cccc-engineer.github.io/Praying/
 
+check out our organization forum website:https://lihaoz8.wixsite.com/main/blog
+
 [How to start this project?]
 
 1. Start backend server

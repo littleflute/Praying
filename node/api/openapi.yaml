@@ -1,0 +1,391 @@
+openapi: 3.0.1
+
+info:
+  contact:
+    email: littleflute@163.com
+  description: CCCC Praying API
+  license:
+    name: AllRightsReserved
+    url: http://localhost:8080/
+  title: CCCC Praying API
+  version: 1.0.15
+
+servers:
+- url: http://localhost:8080/api
+
+security:
+- bearerAuth: []
+
+paths:  
+  /getAllUsers:
+    get:
+      operationId: getAllPlayers 
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListWrapper'
+          description: search results matching criteria
+        "400":
+          content: {}
+          description: bad input parameter
+      x-openapi-router-controller: DefaultController
+      x-openapi-router-service: DefaultService    
+
+  /getPlayer:
+    get:
+      operationId: getPlayerGET
+      parameters:
+      - description: query id.
+        explode: true
+        in: query
+        name: id
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            '*/*':
+              schema:
+                items:
+                  $ref: '#/components/schemas/CCCCUser'
+                type: array
+          description: search results matching criteria
+        "400":
+          content: {}
+          description: bad input parameter
+      x-openapi-router-controller: DefaultController
+      x-openapi-router-service: DefaultService
+  
+ 
+ 
+  /NewPlayer:
+    post:
+      description: Adds a player to the system
+      operationId: addPlayer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignupReqInf'
+        description: Inventory item to add
+        required: false
+      security: []
+      responses:
+        "200":
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignupResInf'
+          description: item created
+        "400":
+          content: {}
+          description: invalid input, object invalid
+        "409":
+          content: {}
+          description: an existing item already exists
+      summary: api/addPlayer
+      x-openapi-router-controller: DefaultController
+      x-openapi-router-service: DefaultService
+  /login:
+    post:
+      description: login to the system
+      operationId: loginTest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginInf'
+        description: login test
+        required: false
+      security: []
+      responses:
+        "200":
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResInf'
+          description: return a token to the client.
+        "400":
+          content: {}
+          description: invalid input, object invalid
+        "409":
+          content: {}
+          description: description=409
+      summary: api/login
+      x-openapi-router-controller: DefaultController
+      x-openapi-router-service: DefaultService
+  
+
+  /adminSignIn:
+    post:
+      description: admin sign in
+      operationId: adminSignIn
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/adminSignInInfo'
+        description: admin sign in
+        required: false
+      security: []
+      responses:
+        "201":
+          content: {}
+          description: admin sign in
+        "400":
+          content: {}
+          description: invalid input, object invalid
+        "409":
+          content: {}
+          description: error!
+      summary: api/adminSignIn
+      tags:
+      - admins
+      x-openapi-router-controller: AdminsController
+      x-openapi-router-service: AdminsService
+
+  /reset:
+    post:
+      description: admin reset database.
+      operationId: reset        
+      requestBody:
+        content:
+          application/json: 
+            schema:
+                items:
+                  $ref: '#/components/schemas/reqInf4Reset'
+                type: array
+        description: admin reset database
+        required: false
+
+      responses:
+        "201":
+          content: {}
+          description: admin reset database.
+        "400":
+          content: {}
+          description: invalid input, object invalid
+        "409":
+          content: {}
+          description: error!
+      summary: api/reset
+      tags:
+      - admins
+      x-openapi-router-controller: AdminsController
+      x-openapi-router-service: AdminsService
+            
+components:
+  schemas:
+    reqInf4Reset:
+      example:
+        ID: 1
+        sql: Drop table tbName
+      properties:
+        ID:
+          example: 1
+          type: integer
+        sql:
+          example: Drop table tbName
+          type: string
+      required: 
+      - ID  
+      - sql 
+      type: object
+
+    adminSignInInfo:
+      example: 
+        AdminName: admin
+        Password: admin
+      properties: 
+        AdminName:
+          example: admin
+          type: string
+        Password:
+          example: admin
+          type: string    
+      required: 
+      - AdminName  
+      - Password 
+      type: object
+    LoginInf:
+      example: 
+        UserName: u1
+        Password: u1
+      properties: 
+        UserName:
+          example: user
+          type: string
+        Password:
+          example: pwtest
+          type: string    
+      required: 
+      - UserName  
+      - Password 
+      type: object
+    LoginResInf:
+      example: 
+        code: 1
+        token: ... 
+        userName: myName
+        userID: 01EGY5C6GJZ91W3K9BWD12D5QV
+      properties: 
+        code:
+          example: 1
+          type: string
+        token:
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InYiOiJbc3FsL2xvZ2luLmpzIC0-IGc2TG9naW4gdjAuMTU1XSAiLCJpZCI6IjAxRUNSNzgySEJRWjEzWVI3MEVGUFAyQ0tYIiwidXNlcm5hbWUiOiJhYWExIiwicGFzc3dvcmQiOiJhYWExIn0sImlhdCI6MTU5NzUyMjIwOCwiZXhwIjoxNTk3NTI1ODA4fQ.ug_jKW9ezEFEv3ebPoNko4tnH9-JLDDe1gxAzS6dCRo
+          type: string   
+        userName:
+          example: myName
+          type: string
+        userID:
+          example: 01EGY5C6GJZ91W3K9BWD12D5QV
+          type: string  
+      required: 
+      - code  
+      type: object 
+      
+    ToMakeFriendReqInf:
+      example: 
+        FromID: 01EGY5C6GJZ91W3K9BWD12D5QV
+        ToID: 01EH0VQC16YT7P88QJ2Q7N3791
+        status: Unkown
+      properties: 
+        FromID:
+          example: 01EGY5C6GJZ91W3K9BWD12D5QV 
+          type: string
+        ToID:
+          example: 01EH0VQC16YT7P88QJ2Q7N3791
+          type: string   
+        status:
+          example: Unkown
+          type: string 
+      required: 
+      - FromID  
+      - ToID 
+      type: object
+    ReponseToMakeFriendInf:
+      example:
+        ReqID: 01EH0VQC16YT7P88QJ2Q7N3791
+        FromID: 01EH0VQC16YT7P88QJ2Q7N3791
+        ToID: 01EH0VQC16YT7P88QJ2Q7N3791
+        status: Yes
+      properties:
+        ReqID:
+          example: 01EH0VQC16YT7P88QJ2Q7N3791
+          type: string
+        FromID:
+          example: 01EH0VQC16YT7P88QJ2Q7N3791
+          type: string
+        ToID:
+          example: 01EH0VQC16YT7P88QJ2Q7N3791
+          type: string
+        status:
+          example: Yes
+          type: string
+    SignupReqInf:
+      example: 
+        UserName: user
+        Password: password
+      properties: 
+        UserName:
+          example: user
+          type: string
+        Password:
+          example: pwtest
+          type: string    
+      required: 
+      - UserName  
+      - Password 
+      type: object
+
+    ListWrapper:
+      properties:
+        code:
+          example: 1
+          type: number
+        n:
+          example: 0
+          type: number
+        str:
+          items:
+            $ref: '#/components/schemas/CCCCUser'
+          type: array
+
+    SignupResInf:
+      example: 
+        code: 1
+        info: sign up a new account 
+      properties: 
+        code:
+          example: 1
+          type: string
+        info:
+          example: sign up a new account 
+          type: string     
+      required: 
+      - code  
+      type: object 
+
+    CCCCUser:
+      example:
+        UserID: d290f1ee-6c54-4b01-90e6-d701748f0851
+        UserName: userName
+        Password: 123abc
+        coin: 0
+        gem: 0
+        FirstName: userName
+        LastName: userName
+        EmailAddress: 123abc@livepraying.com
+        Location: wids132 at 3ewed
+        Coins: 100
+        gems: 10
+      properties:
+        UserID:
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+          type: string
+        UserName:
+          example: userName
+          type: string
+        Password:
+          example: 123abc
+          type: string
+        coin:
+          example: 0
+          type: number
+        gem:
+          example: 0
+          type: number
+        FirstName:
+          example: userName
+          type: string
+        LastName:
+          example: userName
+          type: string
+        EmailAddress:
+          example: 123abc@test.com
+          type: string
+        Location:
+          example: wids132 at 3ewed
+          type: string
+        Coins:
+          example: 100
+          type: string
+        Gems:
+          example: 10
+          type: string
+      required:
+      - EmailAddress
+      - FirstName
+      - LastName
+      - coin
+      - gem
+      - Location
+      - Password
+      - UserID
+      - UserName
+      type: object 
