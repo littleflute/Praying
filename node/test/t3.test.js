@@ -31,9 +31,9 @@ describe(ts, function() {
 
     n++;
     var allPlayers = null;
-    it('Test 3.'+n+': getAllUsers.', function() {    
+    it('Test 3.'+n+': getAllPlayers.', function() {    
       return request(ES.app)
-        .get('/api/getAllUsers')
+        .get('/api/getAllPlayers')
         .send(ds[1])
         .set('accept', 'application/json')
         .set('Authorization','Bearer ' + token) 

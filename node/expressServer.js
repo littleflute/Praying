@@ -15,7 +15,7 @@ const config = require('./config');
 
 const blOld = require('./old/index');
 
-console.log(tag);     
+console.log(tag + "config.PRODUCTION=" + config.PRODUCTION);     
  
 const token = require('./auth/token');
 
@@ -62,7 +62,9 @@ class ExpressServer {
         //res.end('Hello Group6.');
       });
       this.app.use('/old',blOld.fOld);
-      this.app.use('/api', token.verify);
+      
+      this.app.use('/api', token.verify); 
+
       this.app.use('/spec', express.static(path.join(__dirname, 'api')));
       this.app.get('/hello', (req, res) => res.send('Hello World. path: '+this.openApiPath));
       this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(this.schema));

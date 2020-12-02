@@ -1,4 +1,4 @@
-const tag = "[config.js_v0.0.12]";
+const tag = "[config.js_v0.0.13]";
 const path = require('path');
 
 const l = require('./logger');
@@ -6,7 +6,7 @@ l.tag(tag + __dirname);
 
 const config = {
   ROOT_DIR: __dirname,
-  URL_PORT: 8080,//3000,
+  URL_PORT: 3000,
   URL_PATH: 'http://localhost',
   WEB_SOCKET_PORT: 9090,
   BASE_VERSION: 'v2',

@@ -26,7 +26,7 @@ exports.getAllPlayers = function(resolve,Service){
           o.code = 1;
           o.n = result.length;
           o.str = result;
-          resolve(Service.successResponse(o));    
+         resolve(Service.successResponse(o));           
       }         
     }); 
 	con.end();
